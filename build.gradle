@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    jakartaservletapiVersion = "5.0.0"
+    jakartawsrsapiVersion = "3.0.0"
+    micrometerVersion = "1.10.6"
+
+    junitJupiterVersion = "5.9.3"
+}
+
+dependencies {
+    implementation("jakarta.servlet:jakarta.servlet-api:$jakartaservletapiVersion")
+    implementation("jakarta.ws.rs:jakarta.ws.rs-api:$jakartawsrsapiVersion")
+
+    implementation("io.micrometer:micrometer-jetty11:$micrometerVersion")
+    implementation("io.micrometer:micrometer-registry-statsd:$micrometerVersion")
+
+    testImplementation(platform("org.junit:junit-bom:$junitJupiterVersion"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+java {
+    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_11
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
