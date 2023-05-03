@@ -12,6 +12,7 @@ ext {
     micrometerVersion = "1.10.6"
 
     junitJupiterVersion = "5.9.3"
+    mockitoVersion = "5.2.0"
 }
 
 dependencies {
@@ -23,6 +24,7 @@ dependencies {
 
     testImplementation(platform("org.junit:junit-bom:$junitJupiterVersion"))
     testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.mockito:mockito-junit-jupiter:$mockitoVersion")
 }
 
 java {
